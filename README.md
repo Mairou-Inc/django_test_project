@@ -1,14 +1,15 @@
 # django_test_project
 
 
-Сдача задания:
-Ссылка на репозиторий, который содержит ваш проект и README:
+
 ● Миронов Сергей 
 ● Тестовое задание на Python
 ● API для поиска/создания магазинов с фильтрацией
 
 Instalation Guide:
 
+
+```
 sudo apt update 
 sudo apt install postgresql python3 python3-venv python3-pip
 
@@ -25,6 +26,6 @@ pip3 intall -r requirements.txt
 ./manage.py makemigrations
 ./manage.py migrate
 ./manage.py runserver
-
+```
 
 
