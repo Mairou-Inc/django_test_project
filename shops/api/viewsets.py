@@ -18,9 +18,6 @@ class CityView(APIView):
     def get(self, request, *args, **kwargs):
         city=City.objects.all()
         serializer = CitySerializer(city, many = True)
-        print()
-        print(serializer.data)
-        print()
         return Response(serializer.data)
 
 class StreetView(APIView):
@@ -50,7 +47,11 @@ class ShopView(generics.ListAPIView):
         serializer = ShopSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            """Здесь я возвращаю id последнего созданного объекта, и это неправильно
+            Но у меня нет выбора, откуда мне брать id нового объекта, если его по тз запретили выводить ? Я могу делать фильтр по name, но это не уникальное значение
+            :|
+            """
+            return Response(int(Shop.objects.last().id), status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def get_queryset(self):
